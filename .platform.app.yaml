@@ -12,6 +12,9 @@ type: 'nodejs:14'
 
 disk: 512
 
+relationships:
+  mysql_db: "db:mysql"
+
 web:
   commands: 
     start: "node index.js"
