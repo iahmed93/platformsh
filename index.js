@@ -23,11 +23,11 @@ const port = config.port || 3000;
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Hello Platform.sh!" + credentials.path);
+  res.send("Hello Platform.sh!");
 });
 
 app.get("/test", (req, res) => {
-  res.send("Test Platform.sh!" + credentials.path);
+  res.send("Test Platform.sh!");
 });
 
 app.listen(port, () => {
