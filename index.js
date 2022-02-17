@@ -1,6 +1,5 @@
 const express = require("express");
 const { Model } = require("objection");
-const Knex = require("knex");
 
 const config = require("platformsh-config").config();
 
@@ -25,6 +24,10 @@ const app = express();
 
 app.get("/", (req, res) => {
   res.send("Hello Platform.sh!" + credentials.path);
+});
+
+app.get("/test", (req, res) => {
+  res.send("Test Platform.sh!" + credentials.path);
 });
 
 app.listen(port, () => {
