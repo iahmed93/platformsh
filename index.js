@@ -24,7 +24,7 @@ Model.knex(knex);
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Hello Platform.sh!" + credentials.path);
+  res.send("Hello Platform.sh" + credentials.path);
 });
 
 app.listen(port, () => {
