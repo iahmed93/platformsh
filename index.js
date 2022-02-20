@@ -1,5 +1,5 @@
 const express = require("express");
-const { Model } = require("objection");
+// const { Model } = require("objection");
 const log = require("simple-node-logger").createSimpleLogger("logs.log");
 
 const config = require("platformsh-config").config();
