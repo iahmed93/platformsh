@@ -13,7 +13,7 @@ const knex = require("knex")({
     host: credentials.host,
     port: credentials.port,
     user: credentials.username,
-    password: credentials.password,
+    // password: credentials.password,
     database: credentials.path,
   },
 });
