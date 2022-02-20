@@ -6,7 +6,7 @@ const config = require("platformsh-config").config();
 
 const port = config.port || 3000;
 
-// const credentials = config.credentials("mysql_db");
+const credentials = config.credentials("mysql_db");
 
 // const knex = require("knex")({
 //   client: "mysql",
