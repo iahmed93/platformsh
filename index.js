@@ -1,4 +1,5 @@
 const express = require("express");
+const knex = require("knex");
 // const { Model } = require("objection");
 // const log = require("simple-node-logger").createSimpleLogger("logs.log");
 
@@ -8,16 +9,16 @@ const port = config.port || 3000;
 
 const credentials = config.credentials("mysql_db");
 
-const knex = require("knex")({
+const knex = knex({
   client: "mysql",
   connection: {
     host: credentials.hostname,
     port: credentials.port,
     user: credentials.username,
-    // password: credentials.password,
+    password: credentials.password,
     database: credentials.path,
   },
-});
+};
 
 // Model.knex(knex);
 
