@@ -8,16 +8,16 @@ const port = config.port || 3000;
 
 const credentials = config.credentials("mysql_db");
 
-// const knex = require("knex")({
-//   client: "mysql",
-//   connection: {
-//     host: credentials.host,
-//     port: credentials.port,
-//     user: credentials.username,
-//     password: credentials.password,
-//     database: credentials.path,
-//   },
-// });
+const knex = require("knex")({
+  client: "mysql",
+  connection: {
+    host: credentials.hostname,
+    port: credentials.port,
+    user: credentials.username,
+    // password: credentials.password,
+    database: credentials.path,
+  },
+});
 
 // Model.knex(knex);
 
