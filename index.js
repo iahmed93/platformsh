@@ -24,7 +24,7 @@ const credentials = config.credentials("mysql_db");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Hello Platform.sh! " + credentials.password);
+  res.send("Hello Platform.sh! " + credentials);
 });
 
 app.get("/test", (req, res) => {
