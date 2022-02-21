@@ -18,7 +18,7 @@ knex = require("knex")({
     database: credentials.path,
   },
 });
-// Model.knex(knex);
+Model.knex(knex);
 
 const app = express();
 
