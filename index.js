@@ -8,21 +8,16 @@ const port = config.port || 3000;
 
 const credentials = config.credentials("mysql_db");
 
-try {
-  knex = require("knex")({
-    client: "mysql",
-    connection: {
-      host: credentials.host,
-      port: credentials.port,
-      user: credentials.username,
-      password: credentials.password,
-      database: credentials.path,
-    },
-  });
-} catch (error) {
-  console.error(error);
-}
-
+knex = require("knex")({
+  client: "mysql",
+  connection: {
+    host: credentials.host,
+    port: credentials.port,
+    user: credentials.username,
+    password: credentials.password,
+    database: credentials.path,
+  },
+});
 // Model.knex(knex);
 
 const app = express();
