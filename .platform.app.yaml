@@ -19,6 +19,6 @@ web:
   commands: 
     start: "node index.js"
 
-hook: 
+hooks: 
   deploy: |
             npx knex migrate:latest
