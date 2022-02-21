@@ -11,6 +11,7 @@
   "dependencies": {
     "express": "^4.17.2",
     "knex": "^1.0.3",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "objection": "^3.0.1",
     "platformsh-config": "^2.4.1",

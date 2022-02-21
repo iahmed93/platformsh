@@ -1,14 +1,14 @@
 const express = require("express");
 const { Model } = require("objection");
-const Knex = require("knex");
+let knex;
 
 const config = require("platformsh-config").config();
 
 const port = config.port || 3000;
 
-const credentials = config.credentials("database");
+const credentials = config.credentials("mysql_db");
 
-const knex = require("knex")({
+knex = require("knex")({
   client: "mysql",
   connection: {
     host: credentials.host,
@@ -21,10 +21,43 @@ const knex = require("knex")({
 
 Model.knex(knex);
 
+class Person extends Model {
+  static get tableName() {
+    return "persons";
+  }
+
+  static get relationMappings() {
+    return {
+      children: {
+        relation: Model.HasManyRelation,
+        modelClass: Person,
+        join: {
+          from: "persons.id",
+          to: "persons.parentId",
+        },
+      },
+    };
+  }
+}
+
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("Hello Platform.sh!" + credentials.path);
+});
+
+app.post("/person", async (req, res) => {
+  const firstName = req.body.name;
+  const person = await Person.query().insert({
+    firstName,
+  });
+  console.log("created:", person);
+  res.send("Person Created");
+});
+
+app.get("/person", async (req, res) => {
+  const person = await Person.query();
+  res.json(person);
 });
 
 app.listen(port, () => {

@@ -18,3 +18,7 @@ relationships:
 web:
   commands: 
     start: "node index.js"
+
+hooks: 
+  deploy: |
+            npx knex migrate:latest
