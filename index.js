@@ -18,12 +18,46 @@ knex = require("knex")({
     database: credentials.path,
   },
 });
+
 Model.knex(knex);
+
+class Person extends Model {
+  static get tableName() {
+    return "persons";
+  }
+
+  static get relationMappings() {
+    return {
+      children: {
+        relation: Model.HasManyRelation,
+        modelClass: Person,
+        join: {
+          from: "persons.id",
+          to: "persons.parentId",
+        },
+      },
+    };
+  }
+}
 
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("Hello Platform.sh!" + credentials.path);
+});
+
+app.post("/person", async (req, res) => {
+  const firstName = req.body.name;
+  const person = await Person.query().insert({
+    firstName,
+  });
+  console.log("created:", person);
+  res.send("Person Created");
+});
+
+app.get("/person", async (req, res) => {
+  const person = await Person.query();
+  res.json(person);
 });
 
 app.listen(port, () => {
