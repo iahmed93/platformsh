@@ -6,3 +6,12 @@
 "https://{default}/":
     type: redirect
     to: "https://www.{default}/"
+
+
+"https://www.meilisearch.{default}/":
+    type: upstream
+    upstream: app:http
+
+"https://meilisearch.{default}/":
+    type: redirect
+    to: "https://www.{default}/"

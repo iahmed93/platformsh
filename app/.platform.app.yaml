@@ -14,6 +14,7 @@ disk: 512
 
 relationships:
   mysql_db: "db:mysql"
+  meilli: "meilisearch:http"
 
 web:
   commands: 
